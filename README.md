@@ -11,11 +11,15 @@ Each script contains a `LYRICS` list with timed events and display styles.
 
 ## Run
 
-From the project folder, run one of the scripts:
+From the project folder, run a song script like this:
 
 ```bash
-python kiss_me.py
-python nowhere_nobody.py
+python song_name.py
+```
+
+Example:
+
+```bash
 python stupid_song.py
 ```
 

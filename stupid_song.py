@@ -1,22 +1,35 @@
 """
 stupid_song - olivia rodrigo
 ────────────────────
+This script displays timed lyrics with animated windows and effects.
+
 LYRICS format:
-  Normal line:   (timestamp, "lyric line", hold, w, type_speed)
-  Side-by-side:  (timestamp, [phrases], word_delay, hold, (w, h), y_offset, gap, keep_previous)
-  Shout collage: (timestamp, {"shout": "text"}, hold)
-  Linger:        (timestamp, {"linger": "text"}, hold)   # centered, slow, stays until next
-  Slam:          (timestamp, {"slam": "text"}, hold)     # oversized centered payoff
-  Tinker swarm:  (timestamp, {"tinker": "text"|[phrases]}, hold)
-                 # bouncing chips that stay until the final slam closes
+  Normal line:
+    (timestamp, "lyric line", hold, w, type_speed)
+  Side-by-side:
+    (timestamp, [phrases], word_delay, hold, (w, h), y_offset, gap, keep_previous)
+  Shout collage:
+    (timestamp, {"shout": "text"}, hold)
+  Linger:
+    (timestamp, {"linger": "text"}, hold)
+      - centered, slow, and stays until the next lyric event
+  Slam:
+    (timestamp, {"slam": "text"}, hold)
+      - oversized centered payoff
+  Tinker swarm:
+    (timestamp, {"tinker": "text"|[phrases]}, hold)
+      - bouncing chips stay until the final slam closes
 
-  - hold       : seconds window stays after typing finishes; None = forever
-  - type_speed : seconds between each character appearing (default: TYPE_SPEED)
-  - w          : just width now — height grows automatically with text
+Parameters:
+  - hold: seconds the window stays after typing finishes; None means forever
+  - type_speed: seconds between each character appearing (default: TYPE_SPEED)
+  - w: window width; height adjusts automatically with text
 
-Run:  python stupid_song.py
+Edit the LYRICS list to customize timing and display.
+
+Run:
+  python stupid_song.py
 """
-
 import tkinter as tk
 import threading
 import time

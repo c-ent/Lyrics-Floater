@@ -1,24 +1,37 @@
 """
 kiss_me.py
 ────────────────────
+This script displays timed lyrics with several animated styles.
+
 LYRICS format:
-  Normal line:   (timestamp, "lyric line", hold, w, type_speed)
-  Word-timed:    (timestamp, {"words"|"linger"|"slam": [(t, "frag"), ...]}, hold, w)
-                 # t = absolute seconds from song 0; frag includes leading spaces
-  Side-by-side:  (timestamp, [phrases], word_delay, hold, (w, h), y_offset, gap, keep_previous)
-  Shout collage: (timestamp, {"shout": "text"}, hold)
-  Linger:        (timestamp, {"linger": "text"|[(t, frag), ...]}, hold)
-  Slam:          (timestamp, {"slam": "text"|[(t, frag), ...]}, hold)
-  Tinker swarm:  (timestamp, {"tinker": "text"|[phrases]}, hold)
-                 # bouncing chips that stay until the final slam closes
+  Normal line:
+    (timestamp, "lyric line", hold, w, type_speed)
+  Word-timed:
+    (timestamp, {"words"|"linger"|"slam": [(t, "frag"), ...]}, hold, w)
+      - t is absolute seconds from song start
+      - frag may include leading spaces
+  Side-by-side:
+    (timestamp, [phrases], word_delay, hold, (w, h), y_offset, gap, keep_previous)
+  Shout collage:
+    (timestamp, {"shout": "text"}, hold)
+  Linger:
+    (timestamp, {"linger": "text"|[(t, frag), ...]}, hold)
+  Slam:
+    (timestamp, {"slam": "text"|[(t, frag), ...]}, hold)
+  Tinker swarm:
+    (timestamp, {"tinker": "text"|[phrases]}, hold)
+      - bouncing chips stay until the final slam closes
 
-  - hold       : seconds window stays after typing finishes; None = forever
-  - type_speed : seconds between each character appearing (default: TYPE_SPEED)
-  - w          : just width now — height grows automatically with text
+Parameters:
+  - hold: seconds the window stays after typing finishes; None means forever
+  - type_speed: seconds between each character appearing (default: TYPE_SPEED)
+  - w: window width; height adjusts automatically with text
 
-Run:  python kiss_me.py
+Edit the LYRICS list to customize the timing and display.
+
+Run:
+  python kiss_me.py
 """
-
 import tkinter as tk
 import threading
 import time
